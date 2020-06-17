@@ -9,5 +9,34 @@
 </form>
 
 <script>
+  // Read the CSRF token from the <meta> tag
+  const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+  console.log('token', token)
 
+  const submitForm = () => {
+    // Make a request using the Fetch API
+    fetch('/process', {
+      credentials: 'same-origin', // <-- includes cookies in the request
+      headers: {
+        'CSRF-Token': token // <-- is the csrf token as a header
+      },
+      method: 'POST',
+      body: JSON.stringify({
+        favoriteColor: 'blue'
+      })
+    })
+    .then(res => res.json())
+    .then(res => {
+      console.log('submitted', res)
+    })
+    .catch(err => {
+      console.error('An error occured', err)
+    })
+  }
+
+  document.querySelector('form').addEventListener('submit', e => {
+    e.preventDefault()
+
+    submitForm()
+  })
 </script>

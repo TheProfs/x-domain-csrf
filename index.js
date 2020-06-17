@@ -25,7 +25,10 @@ app.get('/form', csrfProtection, function (req, res) {
 })
 
 app.post('/process', parseForm, csrfProtection, function (req, res) {
-  res.send('data is being processed')
+  console.log('submitted')
+  res.json({
+    result: 'data is being processed'
+  })
 })
 
 app.listen(5000, e => {
