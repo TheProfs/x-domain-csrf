@@ -17,14 +17,17 @@ app.set('view engine', 'ejs')
 // we need this because "cookie" is true in csrfProtection
 app.use(cookieParser())
 
-app.get('/form', csrfProtection, function (req, res) {
-  // pass the csrfToken to the view
-  res.render('form', {
+app.get('/form', (req, res) => {
+  res.render('form')
+})
+
+app.get('/csrf-token', csrfProtection, (req, res) => {
+  res.json({
     csrfToken: req.csrfToken()
   })
 })
 
-app.post('/process', parseForm, csrfProtection, function (req, res) {
+app.post('/process', csrfProtection, (req, res) => {
   console.log('submitted')
   res.json({
     result: 'data is being processed'
