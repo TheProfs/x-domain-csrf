@@ -9,7 +9,7 @@
   let token
 
   // Make a request using the Fetch API
-  fetch('/csrf-token', {
+  fetch('http://localhost:5010/csrf-token', {
     method: 'GET'
   })
   .then(res => res.json())
@@ -25,7 +25,7 @@
     if (!token) throw new Error('Token not defined')
 
     // Make a request using the Fetch API
-    fetch('/process', {
+    fetch('http://localhost:5010/process', {
       credentials: 'same-origin', // <-- includes cookies in the request
       headers: {
         'CSRF-Token': token // <-- is the csrf token as a header
