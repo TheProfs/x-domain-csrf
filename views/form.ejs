@@ -1,5 +1,5 @@
 <h1> Hello World </h1>
-<meta name="csrf-token" content="">
+<meta name="csrf-token" content="<%= csrfToken %>">
 
 <form action="/process" method="POST">
   <input type="hidden" name="_csrf" value="<%= csrfToken %>">
@@ -7,3 +7,7 @@
   Favorite color: <input type="text" name="favoriteColor">
   <button type="submit">Submit</button>
 </form>
+
+<script>
+
+</script>

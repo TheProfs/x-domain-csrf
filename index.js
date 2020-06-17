@@ -1,15 +1,15 @@
-var cookieParser = require('cookie-parser')
-var csrf = require('csurf')
-var bodyParser = require('body-parser')
-var express = require('express')
-var ejs = require('ejs')
+const cookieParser = require('cookie-parser')
+const csrf = require('csurf')
+const bodyParser = require('body-parser')
+const express = require('express')
+const ejs = require('ejs')
 
 // setup route middlewares
-var csrfProtection = csrf({ cookie: true })
-var parseForm = bodyParser.urlencoded({ extended: false })
+const csrfProtection = csrf({ cookie: true })
+const parseForm = bodyParser.urlencoded({ extended: false })
 
 // create express app
-var app = express()
+const app = express()
 
 app.set('view engine', 'ejs')
 
