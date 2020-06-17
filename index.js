@@ -1,3 +1,5 @@
+'use strict'
+
 const cookieParser = require('cookie-parser')
 const csrf = require('csurf')
 const bodyParser = require('body-parser')
